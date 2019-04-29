@@ -1,0 +1,39 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>查看</title>
+</head>
+<body>
+<a href="{% url 'add' %}">新增</a>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>爱好</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user_dict in user_obj %}
+            <tr>
+                <td>{{ user_dict.id }}</td>
+                <td>{{ user_dict.name }}</td>
+                <td>{{ user_dict.age }}</td>
+                <td>{{ user_dict.gender}}</td>
+                <td>{{ user_dict.hobby }}</td>
+                <td>
+                    <a href="{% url 'update' user_dict.id %}">更改</a>
+                    <a href="{% url 'del' user_dict.id %}">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
